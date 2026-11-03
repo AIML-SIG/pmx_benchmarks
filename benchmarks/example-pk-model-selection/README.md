@@ -1,19 +1,9 @@
-# Example PK Model Selection Benchmark
+# PK Model Selection: Submission Format Example
 
-This is an example benchmark dataset. For full documentation, see [index.qmd](index.qmd).
+This example illustrates submission files and task definitions. Each split contains one subject with one dose row and three observation rows. These snippets are not a complete, validated scientific benchmark and have no DOI.
 
-## Quick Links
+- [Documentation](index.qmd)
+- [Metadata](metadata.yml)
+- [Data dictionary](data/data-dictionary.yml)
 
-- **Documentation:** [index.qmd](index.qmd)
-- **Metadata:** [metadata.yml](metadata.yml)
-- **Data Dictionary:** [data/data-dictionary.yml](data/data-dictionary.yml)
-
-## Files
-
-- `data/train.csv` - Training dataset (140 subjects)
-- `data/test.csv` - Test dataset (60 subjects)
-- `data/data-dictionary.yml` - Variable descriptions
-
-## Citation
-
-Researcher J, Modeler J. (2025). Example PK Model Selection Benchmark. Pharmacometrics Benchmarks Initiative. DOI: TBD
+After cloning, run `git lfs install` and `git lfs pull` to retrieve the CSV files. Treat `.` in DV as missing when reading them. The repository MIT license applies; retain its copyright and license notice when redistributing content.

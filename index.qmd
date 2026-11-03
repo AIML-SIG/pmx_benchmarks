@@ -1,37 +1,105 @@
 ---
 title: "Pharmacometrics Benchmarks"
+page-layout: full
+toc: false
 ---
 
-## Welcome
+::: {.home-hero}
 
-The Pharmacometrics Benchmarks repository is a curated, peer-reviewed collection of benchmark datasets for evaluating and comparing pharmacometric modeling methodologies. Each accepted dataset receives a DOI and is permanently hosted here.
+<p class="home-kicker">AI/ML SIG · Benchmarking Datasets Working Group</p>
 
-## Two Goals
+## Putting methods to the test
 
-The repository serves two complementary purposes:
+Shared datasets and clearly defined tasks can show how methods perform on the questions that matter in drug development. We are building an open collection that makes those comparisons reproducible, useful, and easy to discuss across the field.
 
-**Goal 1 — Generic Benchmarks:** A curated collection of pharmacometric datasets for method comparison, teaching, and automated workflows. The bar for novelty is moderate — datasets must be well-motivated but do not need to represent complex real-world scenarios.
+[Suggest a benchmark problem](https://github.com/AIML-SIG/pmx_benchmarks/issues/new){.btn .btn-primary .btn-lg} [Explore the scope](scope.qmd){.btn .btn-outline-primary .btn-lg}
 
-**Goal 2 — Grand Challenges:** Highly realistic datasets targeting specific, hard problems in drug development — the kind encountered when current methods cannot address a real-world problem effectively. Designed for community competitions and linked to publication in [Quantitative Medicine](https://ascpt.onlinelibrary.wiley.com/journal/21638306).
+:::
 
-Read the [Scope & Eligibility](scope.qmd) page to understand which goal fits your dataset.
+::: {.home-section}
 
-## Why Benchmarks Matter
+## The vision
 
-Standardized benchmarks enable:
+Methods papers in pharmacometrics often use proprietary datasets or simulations designed for one method. When the data, questions, and evaluation criteria differ between papers, it is difficult to compare results. Simulations can also miss the irregular sampling, missing data, and other challenges encountered in practice, leaving method developers without shared examples of the problems they need to solve.
 
-- **Reproducible comparisons** between different modeling approaches
-- **Transparent evaluation** of new methods against established baselines
-- **Community-driven standards** for pharmacometric modeling
-- **Competitive innovation** through organized challenges
+We aim to collect benchmarks with a clear pharmacometric question, documented data and assumptions, defined tasks and metrics, and a justified train/test split. Shared benchmarks can make research easier to compare and help direct new methods toward practical drug-development decisions.
 
-## Getting Started
+The Benchmarking Datasets Working Group of the AI/ML SIG is developing this collection, with hosting under ISoP planned. Participation is open to the wider pharmacometrics community.
 
-- Read [Scope & Eligibility](scope.qmd) — what belongs here and the two submission tracks
-- Browse available [benchmarks](benchmarks.qmd)
-- Follow the [Submission Guide](submission-guide.qmd) to contribute
-- [Contact us](contact.qmd) to get involved
+:::
 
-## Recent Benchmarks
+::: {.home-section}
 
-*Benchmarks will be listed here as they are added to the repository.*
+## Two ways to build a benchmark
+
+::: {.home-grid}
+
+::: {.home-card}
+
+### Generic benchmarks
+
+Focused cases for method comparison, teaching, or evaluating automated modeling workflows. A small synthetic dataset that isolates sparse sampling, mixed dosing, or a covariate challenge can be valuable.
+
+[See Goal 1 criteria](scope.qmd#goal-1-generic-benchmarks)
+
+:::
+
+::: {.home-card}
+
+### Grand challenges
+
+Realistic, consequential drug-development problems that current methods struggle to address. These are intended for deeper scientific review and may support future community challenges.
+
+[See Goal 2 criteria](scope.qmd#goal-2-grand-challenges)
+
+:::
+
+:::
+
+:::
+
+::: {.home-section}
+
+## How you can get involved
+
+::: {.home-grid .home-grid-three}
+
+::: {.home-card}
+
+### 1. Bring a problem
+
+Tell us about a pharmacometric decision that deserves a better benchmark. An idea is enough to start; you do not need to have a dataset ready.
+
+[Open a discussion issue](https://github.com/AIML-SIG/pmx_benchmarks/issues/new)
+
+:::
+
+::: {.home-card}
+
+### 2. Contribute a dataset
+
+Submit a documented dataset with a defined task, metric, and train/test split. Synthetic datasets and focused cases are welcome.
+
+[Read the submission guide](submission-guide.qmd)
+
+:::
+
+::: {.home-card}
+
+### 3. Help shape the work
+
+Offer to review a submission, help define useful evaluation tasks, or try the reference example and tell us what is missing.
+
+[Get in touch](contact.qmd)
+
+:::
+
+:::
+
+:::
+
+::: {.home-status}
+
+**Where we are now.** The [benchmark page](benchmarks.qmd) contains a format example with small illustrative data files, rather than an accepted community benchmark. We are inviting community input and the first submissions.
+
+:::

@@ -6,12 +6,14 @@ title: "Submission Guide"
 
 We welcome benchmark dataset submissions from the pharmacometrics community. There are two submission tracks — read the [Scope & Eligibility](scope.qmd) page first to determine which one fits your dataset.
 
+Have an idea but no finished dataset? [Start with an issue](https://github.com/AIML-SIG/pmx_benchmarks/issues/new) describing the problem and the decision you want to evaluate. The file requirements below apply to completed submissions.
+
 | | Goal 1 — Generic Benchmarks | Goal 2 — Grand Challenges |
 |-|------------------------------|---------------------------|
-| **Intended for** | Teaching cases, agentic datasets, unit-test style submissions | Highly realistic drug-development scenarios, competition-ready |
+| **Intended for** | Teaching cases, agentic datasets, unit-test style submissions | Highly realistic drug-development scenarios |
 | **Novelty bar** | Moderate — must be justified | High — must address a significant field problem |
-| **Review** | Structural + light novelty review | Editorial triage, then full peer review |
-| **Outcome** | DOI, website listing | DOI, website listing, QM fast-track eligibility, featured status |
+| **Review process** | Structural + light novelty review | Proposed editorial triage, then full scientific peer review |
+| **Planned outcome** | Website listing; DOI once archival process is in place | Website listing; DOI once archival process is in place; possible featured status |
 
 All submissions must include a **motivation section** — see [§ Motivation](#motivation) below.
 
@@ -29,7 +31,7 @@ The dataset must be appropriate for pharmacometric modeling — pharmacokinetics
 
 Your submission must include:
 
-- A generative process description (for synthetic data) or a realistic scenario description
+- A generative process description for synthetic data, or a scenario and provenance description for other data
 - A [yspec-style YAML data dictionary](https://github.com/metrumresearchgroup/yspec) for all variables
 - A train/test split with documented rationale
 
@@ -57,12 +59,12 @@ For Goal 1, one paragraph is sufficient. For Goal 2, a fuller justification is e
 
 #### Realism
 
-The dataset must reflect realistic clinical trial conditions:
+The dataset should reflect the conditions relevant to the problem it represents, for example:
 
 - **Irregular sampling**: Realistic clinical sampling schedules
-- **Confounding dropouts**: Realistic patient dropout patterns
+- **Dropout or missingness**: Realistic patterns when these affect the question
 - **Realistic relationships**: True dose-exposure-response relationships
-- **Longitudinal structure**: Repeated measurements over time
+- **Longitudinal structure**: Repeated measurements over time for most grand challenges
 
 Non-longitudinal modalities (e.g. DXA, PET imaging) may be considered case-by-case with explicit justification.
 
@@ -106,7 +108,7 @@ Your main documentation file must include:
 
 #### 3. `data-dictionary.yml`
 
-A [yspec](https://github.com/metrumresearchgroup/yspec)-style YAML schema. Top-level keys are column names; reserved keys ending in `__` are not treated as columns.
+A [yspec](https://github.com/metrumresearchgroup/yspec)-style YAML schema. Top-level keys are column names; reserved keys ending in `__` or starting with `_` are not treated as columns by the validator.
 
 ```yaml
 SETUP__:
@@ -181,9 +183,9 @@ The repository uses a single permissive licence, MIT, for data and code alike, r
 than asking each submitter to pick one. This keeps benchmarks unambiguously reusable.
 Set `license: MIT` in `metadata.yml`.
 
-Attribution is not a legal condition of the MIT licence, but we ask that users cite the
-benchmarks they use, and every accepted submission receives a DOI to make that easy. If
-you cannot release your data under MIT, raise it in your pull request before submitting.
+Retain the copyright and license notice when redistributing content. We also ask that users cite the
+benchmarks they use. A DOI is planned for accepted submissions once the archival process is in place. If
+you cannot release your data under MIT, discuss eligibility in an issue before preparing a submission.
 
 ---
 
@@ -198,7 +200,7 @@ you cannot release your data under MIT, raise it in your pull request before sub
 
 ### 1. Fork the Repository
 
-Go to [github.com/PMxBenchmarks/pmx_benchmarks](https://github.com/PMxBenchmarks/pmx_benchmarks) and click **Fork**.
+Go to [github.com/AIML-SIG/pmx_benchmarks](https://github.com/AIML-SIG/pmx_benchmarks) and click **Fork**.
 
 ### 2. Clone Your Fork
 
@@ -206,6 +208,7 @@ Go to [github.com/PMxBenchmarks/pmx_benchmarks](https://github.com/PMxBenchmarks
 git clone https://github.com/<your-username>/pmx_benchmarks.git
 cd pmx_benchmarks
 git lfs install
+git lfs pull
 ```
 
 ### 3. Create a Branch
@@ -220,7 +223,7 @@ git checkout -b benchmark/<your-dataset-name>
 mkdir -p benchmarks/<your-dataset-name>/data
 ```
 
-Use `BENCHMARK_TEMPLATE.md` and `benchmarks/example-pk-model-selection/` as references.
+Use the [benchmark template](https://github.com/AIML-SIG/pmx_benchmarks/blob/main/BENCHMARK_TEMPLATE.md) and [format example](benchmarks/example-pk-model-selection/index.qmd) as references. The example data files are small illustrative snippets; replace them with your own documented dataset.
 
 ### 5. Validate Locally
 
@@ -240,7 +243,7 @@ git push origin benchmark/<your-dataset-name>
 
 ### 7. Open a Pull Request
 
-Go to your fork on GitHub and click **Compare & pull request**. Set base repository to `PMxBenchmarks/pmx_benchmarks`, base branch `main`. Fill in the PR template completely — in particular the motivation section.
+Go to your fork on GitHub and click **Compare & pull request**. Set base repository to `AIML-SIG/pmx_benchmarks`, base branch `main`. Fill in the PR template completely — in particular the motivation section.
 
 ### 8. Respond to Review
 
@@ -250,7 +253,7 @@ Push updates to the **same branch**. Do not open a new PR.
 
 ## Large Data Files
 
-All benchmark data files are stored using Git LFS. Run `git lfs install` once after cloning. Git automatically handles tracked types: `*.csv`, `*.parquet`, `*.RData`, `*.rds`, `*.sas7bdat`, `*.xpt`.
+All benchmark data files are stored using Git LFS. Run `git lfs install` once after cloning and `git lfs pull` to download the actual files. If a CSV begins with `version https://git-lfs.github.com/spec/v1`, it is a pointer and the data still need to be downloaded. Git automatically handles tracked types: `*.csv`, `*.parquet`, `*.RData`, `*.rds`, `*.sas7bdat`, `*.xpt`.
 
 ---
 

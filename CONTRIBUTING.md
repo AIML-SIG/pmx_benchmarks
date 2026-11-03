@@ -6,7 +6,7 @@ Thank you for your interest in contributing to the Pharmacometrics Benchmarks In
 
 ### 1. Submit a Benchmark Dataset
 
-The primary way to contribute is by submitting a benchmark dataset. There are two tracks — read the [Scope & Eligibility](https://pmxbenchmarks.github.io/pmx_benchmarks/scope.html) page first.
+The primary way to contribute is by submitting a benchmark dataset. There are two tracks — read the [Scope & Eligibility](https://aiml-sig.github.io/pmx_benchmarks/scope.html) page first.
 
 **Quick steps:**
 
@@ -26,13 +26,7 @@ Help us improve our documentation by:
 
 ### 3. Develop Helper Packages
 
-Contribute to our companion data loading packages in separate repositories:
-
-- **Python**: `pmx-benchmarks-py` (coming soon)
-- **R**: `pmxbenchmarks` (coming soon)
-- **Julia**: `PMXBenchmarks.jl` (coming soon)
-
-These packages provide programmatic access to benchmarks with convenient APIs.
+Helper packages for Python, R, and Julia are proposed; they are not released. See [COMPANION_REPOS.md](COMPANION_REPOS.md) and open an issue if you want to help design or build them.
 
 ### 4. Review Benchmarks
 
@@ -43,11 +37,11 @@ Become a reviewer! Help evaluate submitted benchmarks for:
 - Data quality
 - Adherence to requirements
 
-Contact the maintainers to express interest in reviewing.
+[Open an issue](https://github.com/AIML-SIG/pmx_benchmarks/issues/new) to express interest in reviewing and describe your expertise.
 
 ### 5. Report Issues
 
-Found a bug or have a suggestion? [Open an issue](https://github.com/PMxBenchmarks/pmx_benchmarks/issues).
+Found a bug or have a suggestion? [Open an issue](https://github.com/AIML-SIG/pmx_benchmarks/issues).
 
 ## Development Setup
 
@@ -155,7 +149,7 @@ We are committed to providing a welcoming and inclusive environment for all cont
 
 ### Enforcement
 
-Violations may result in temporary or permanent ban from the project. Report concerns to [contact information TBD].
+Violations may result in temporary or permanent ban from the project. Contact the maintainers through the [contact page](https://aiml-sig.github.io/pmx_benchmarks/contact.html) to request a suitable reporting channel; avoid posting sensitive details publicly.
 
 ## Attribution
 
@@ -167,19 +161,16 @@ Contributors will be acknowledged in:
 
 ## Questions?
 
-- Check our [FAQ](https://pmxbenchmarks.github.io/pmx_benchmarks/submission-guide.html)
-- [Open an issue](https://github.com/PMxBenchmarks/pmx_benchmarks/issues)
-- [Contact us](https://pmxbenchmarks.github.io/pmx_benchmarks/contact.html)
+- Check the [Submission Guide](https://aiml-sig.github.io/pmx_benchmarks/submission-guide.html)
+- [Open an issue](https://github.com/AIML-SIG/pmx_benchmarks/issues)
+- [Contact us](https://aiml-sig.github.io/pmx_benchmarks/contact.html)
 
 ## License
 
 By contributing, you agree that your contributions — code, documentation, and
 benchmark data alike — will be licensed under the MIT License.
 
-We deliberately use a single permissive licence for everything rather than asking
-each submitter to choose one. Attribution is therefore not a legal requirement, but
-we ask that you cite the benchmarks you use; every accepted submission receives a
-DOI to make that straightforward.
+Retain the copyright and license notice when redistributing repository content. We also ask that users cite the benchmarks they use. A DOI is planned for accepted submissions once an archival process is in place.
 
 ---
 

@@ -5,9 +5,9 @@
 Which goal does this submission target? (check one)
 
 - [ ] **Goal 1 — Generic Benchmark** (teaching case, agentic dataset, unit-test style, moderate novelty)
-- [ ] **Goal 2 — Grand Challenge** (highly realistic, field-level problem, QM publication eligible)
+- [ ] **Goal 2 — Grand Challenge** (highly realistic drug-development problem, proposed scientific review)
 
-Not sure? See [Scope & Eligibility](https://pmxbenchmarks.github.io/pmx_benchmarks/scope.html).
+Not sure? See [Scope & Eligibility](https://aiml-sig.github.io/pmx_benchmarks/scope.html).
 
 ---
 
@@ -61,14 +61,14 @@ Not sure? See [Scope & Eligibility](https://pmxbenchmarks.github.io/pmx_benchmar
 - [ ] Train and test files use consistent column structure
 - [ ] Data dictionary covers all columns
 - [ ] No personally identifiable information (PII) included
-- [ ] Data is longitudinal *(Goal 2 required; Goal 1 typical)*
-- [ ] Realistic sampling, dropouts, and relationships *(Goal 2 required)*
+- [ ] For Goal 2, data is longitudinal or an exception is justified
+- [ ] For Goal 2, sampling, relationships, and dropout or missingness reflect the problem where relevant
 
 ### Task Requirements
 
 - [ ] At least one task defined with `type`, `output_format`, and `metric`
 - [ ] Evaluation performed on the test set
-- [ ] Tasks reflect real or plausible drug-development decisions
+- [ ] Tasks fit the selected track: focused questions for Goal 1, motivated drug-development decisions for Goal 2
 
 ### Metadata
 
@@ -76,7 +76,7 @@ Not sure? See [Scope & Eligibility](https://pmxbenchmarks.github.io/pmx_benchmar
 - [ ] `goal` field set (`generic` or `grand_challenge`)
 - [ ] YAML syntax is valid
 - [ ] Authors and affiliations are accurate
-- [ ] `license: MIT` set (the repository default — raise it in this PR if you cannot use MIT)
+- [ ] `license: MIT` set (the repository default — discuss eligibility before submission if you cannot use MIT)
 
 ### Technical
 
@@ -102,7 +102,7 @@ Not sure? See [Scope & Eligibility](https://pmxbenchmarks.github.io/pmx_benchmar
 ## For Maintainers
 
 - [ ] Automated validation passed
-- [ ] Scientific review completed
+- [ ] Review appropriate to the selected track completed
 - [ ] Documentation quality approved
-- [ ] DOI requested / assigned
+- [ ] Citation information recorded; DOI requested if the archival process is available
 - [ ] Benchmark listing updated on website

@@ -1,228 +1,70 @@
 ---
-title: "Example PK Model Selection Benchmark"
-subtitle: "A synthetic two-compartment model with covariates"
-author:
-  - name: Jane Researcher
-    affiliation: Example University
-  - name: John Modeler
-    affiliation: Pharma Institute
-date: 2025-10-16
+title: "PK Model Selection: Submission Format Example"
+subtitle: "Illustrative data and task definitions for contributors"
 ---
+
+## Status and purpose
+
+This example shows how to organize a benchmark submission. The CSV files contain one subject in each split and three concentration observations per subject. They are small illustrative snippets, not a complete dataset for evaluating modeling methods. No scientific validation or DOI is claimed for this example.
+
+Use the [submission guide](../../submission-guide.qmd) and [benchmark template](https://github.com/AIML-SIG/pmx_benchmarks/blob/main/BENCHMARK_TEMPLATE.md) to prepare a complete submission.
+
+**Goal:** 1 — Generic Benchmark ([Scope & Eligibility](../../scope.qmd)).
 
 ## Abstract
 
-This benchmark dataset provides a synthetic pharmacokinetic dataset generated from a two-compartment model with covariate effects. The primary task is model selection: identifying the correct structural model and covariate relationships from the data. The dataset includes irregular sampling, informative dropout, and realistic inter-individual variability.
-
-**Keywords:** pharmacokinetics, model selection, two-compartment, synthetic data
-
-**Goal:** 1 — Generic Benchmark ([Scope & Eligibility](../../scope.qmd))
+The example uses a pharmacokinetic model-selection question to illustrate the required files: documentation, metadata, training and test data, and a YAML data dictionary. The intended tasks are structural model selection, covariate selection, and concentration prediction. The snippets alone cannot support these tasks; a full submission would supply sufficient data and a reproducible generative process.
 
 ## Motivation
 
-*This is the repository's reference submission. It is deliberately modest, and exists
-partly to demonstrate the required structure — see [Scope & Eligibility](../../scope.qmd)
-for what a motivation section should contain.*
+A useful model-selection benchmark could compare methods against a known generating model using the same tasks and evaluation criteria. For example, a synthetic case could specify a two-compartment model, weight effects on clearance and central volume, and covariates with no true effects.
 
-**Why should this dataset be added to this repository?**
-
-Model selection is among the most common decisions in pharmacometric practice, yet methods
-for it are usually demonstrated on datasets whose true structure is unknown, so a method can
-only be judged against another method rather than against the truth. This dataset fixes the
-generating mechanism — a two-compartment model with two real covariate effects and two decoy
-covariates — so that structural and covariate selection can be scored against a known answer.
-It also serves as the worked example that new submitters copy from.
-
-**Which existing datasets (in this repo or elsewhere) are most similar?**
-
-No other dataset in this repository targets model selection. Outside it, the closest widely
-used cases are the classic teaching datasets distributed with modelling software — the
-theophylline and phenobarbital datasets, and the simulated examples shipped with Xpose. These
-are real or semi-real, sparsely documented as to ground truth, and carry no pre-specified
-train/test split or defined evaluation metric.
-
-**How is this submission concretely different enough to warrant inclusion?**
-
-Three things the teaching datasets do not provide: the true structural model and covariate
-relationships are documented, including which covariates are deliberate decoys; a fixed 70/30
-subject-level train/test split is shipped so results are comparable across papers; and three
-typed tasks with declared metrics and output formats are specified in `metadata.yml`, so a
-method's score is reproducible rather than a matter of interpretation.
+A contributor would need to explain which existing datasets are most similar and how the new case adds value. This format example demonstrates the questions to address; it does not establish novelty or provide evidence for a particular generating model.
 
 ## Background
 
-Model selection is a fundamental challenge in pharmacometrics. This benchmark represents a controlled scenario where the true data-generating mechanism is known, allowing for rigorous evaluation of model selection methodologies.
+Structural and covariate selection are common pharmacometric modeling decisions. A complete synthetic benchmark would document the true model, parameter values, variability, dosing and sampling schedules, and the simulation code or procedure needed to reproduce the data. No such generation code is included here, so the values in the snippets should not be treated as validated simulations of a two-compartment model.
 
-### Intended Use
+## Dataset description
 
-- Evaluate different model selection strategies (stepwise, LASSO, Bayesian methods)
-- Compare information criteria (AIC, BIC, cross-validation)
-- Assess performance under realistic data conditions
+The supplied files are:
 
-## Data Generation
+| Split | Subject ID | Subjects | Dose rows | Observation rows |
+|---|---|---:|---:|---:|
+| Training | 1 | 1 | 1 | 3 |
+| Test | 201 | 1 | 1 | 3 |
 
-### True Model Structure
+Each subject has one 100 mg dose row. Observation times are 2, 8, and 24 hours in the training snippet and 3, 12, and 48 hours in the test snippet. The files do not demonstrate dropout, population variability, or a representative study design.
 
-The data were generated using a two-compartment model with first-order absorption and elimination:
+The [data dictionary](https://github.com/AIML-SIG/pmx_benchmarks/blob/main/benchmarks/example-pk-model-selection/data/data-dictionary.yml) covers all columns. Dose rows use `.` for a missing dependent variable; readers should treat it as missing.
 
-$$
-\frac{dA_{gut}}{dt} = -k_a \cdot A_{gut}
-$$
+## Illustrative tasks
 
-$$
-\frac{dA_{central}}{dt} = k_a \cdot A_{gut} - \left(\frac{CL}{V_c} + \frac{Q}{V_c}\right) \cdot A_{central} + \frac{Q}{V_p} \cdot A_{peripheral}
-$$
+These task definitions match `metadata.yml`. They describe what a complete dataset could support; the current snippets are not sufficient for meaningful scores.
 
-$$
-\frac{dA_{peripheral}}{dt} = \frac{Q}{V_c} \cdot A_{central} - \frac{Q}{V_p} \cdot A_{peripheral}
-$$
+| Task | Type | Metric | Output columns |
+|---|---|---|---|
+| Structural model selection | Classification | Accuracy | `MODEL_SELECTED` |
+| Covariate model selection | Classification | F1 | `COVARIATE`, `SELECTED` |
+| Concentration prediction | Regression | RMSE | `ID`, `TIME`, `PRED` |
 
-### Parameter Values
+A full submission must specify the candidate models, covariate effects and scoring truth, and exactly how each metric is calculated. For the prediction task, `DV` is the target and only observation rows (`EVID=0`) would be scored.
 
-Population typical values:
+## Train/test split
 
-- $CL = 10$ L/h
-- $V_c = 50$ L  
-- $Q = 5$ L/h
-- $V_p = 30$ L
-- $k_a = 0.5$ h$^{-1}$
+The two snippets use different subjects. They illustrate file separation, rather than a validated split strategy. A complete benchmark must explain how subjects or observations were assigned, why the split fits its scientific question, and how test data are reserved for evaluation.
 
-### Covariate Effects
+## Read the example files
 
-**Clearance:**
-$$
-CL_i = 10 \cdot \left(\frac{WT_i}{70}\right)^{0.75} \cdot e^{\eta_{CL,i}}
-$$
-
-**Central Volume:**
-$$
-V_{c,i} = 50 \cdot \left(\frac{WT_i}{70}\right) \cdot e^{\eta_{V_c,i}}
-$$
-
-Where $WT$ is body weight in kg.
-
-### Variability
-
-**Inter-individual variability (IIV):**
-
-- $\omega_{CL}^2 = 0.09$ (30% CV)
-- $\omega_{V_c}^2 = 0.04$ (20% CV)
-- $\omega_{Q}^2 = 0.16$ (40% CV)
-- $\omega_{V_p}^2 = 0.04$ (20% CV)
-
-**Residual error:**
-
-Combined proportional and additive error:
-$$
-Y_{ij} = C_{pred,ij} \cdot (1 + \epsilon_{prop,ij}) + \epsilon_{add,ij}
-$$
-
-Where $\epsilon_{prop} \sim N(0, 0.01)$ and $\epsilon_{add} \sim N(0, 0.25)$.
-
-### Study Design
-
-- **Sample size:** 200 subjects
-- **Dosing:** 100 mg oral dose once daily for 7 days
-- **Sampling:** Sparse sampling (3-5 samples per subject) at irregular times
-- **Dropout:** 15% dropout rate, higher for subjects with extreme exposure
-
-## Dataset Description
-
-### Variables
-
-See `data/data-dictionary.yml` for complete descriptions. Key variables:
-
-- **ID:** Subject identifier (1-200)
-- **TIME:** Time since first dose (hours)
-- **AMT:** Dose amount (mg)
-- **DV:** Dependent variable (concentration, mg/L)
-- **EVID:** Event ID (0=observation, 1=dose)
-- **CMT:** Compartment (1=gut, 2=central)
-- **WT:** Body weight (kg)
-- **AGE:** Age (years)
-- **SEX:** Sex (0=Female, 1=Male)
-
-### Sample Size
-
-- **Training set:** 140 subjects (70%), 673 observations
-- **Test set:** 60 subjects (30%), 287 observations
-
-## Tasks
-
-### Task 1: Structural Model Selection
-
-**Objective:** Identify the correct structural model from candidates.
-
-**Candidates:**
-
-1. One-compartment model
-2. Two-compartment model (true)
-3. Three-compartment model
-
-**Evaluation Metric:** Model selection accuracy, AIC/BIC values on test set
-
-### Task 2: Covariate Model Selection
-
-**Objective:** Identify the correct covariate relationships.
-
-**Covariates to test:**
-
-- Weight on CL (true effect)
-- Weight on Vc (true effect)
-- Age on CL (no effect)
-- Sex on CL (no effect)
-
-**Evaluation Metric:** True positive and false positive rates for covariate selection
-
-### Task 3: Prediction Accuracy
-
-**Objective:** Predict concentrations in the test set.
-
-**Evaluation Metrics:**
-
-- Root Mean Squared Error (RMSE)
-- Mean Absolute Error (MAE)
-- Normalized Root Mean Squared Error (NRMSE)
-
-## Train/Test Split
-
-The dataset was split 70/30 maintaining:
-
-- Representative distribution of covariates
-- Similar dropout rates between sets
-- Balanced sparse sampling patterns
-
-**Rationale:** This split allows for robust model development while reserving sufficient data for meaningful external validation.
-
-## Usage Example
+Retrieve data with Git LFS after cloning the repository: `git lfs install`, then `git lfs pull`. Run the following from this example's directory:
 
 ```python
 import pandas as pd
 
-# Load data
-train = pd.read_csv('data/train.csv')
-test = pd.read_csv('data/test.csv')
-
-# Load data dictionary
-import yaml
-with open('data/data-dictionary.yml') as f:
-    data_dict = yaml.safe_load(f)
-print(data_dict)
+train = pd.read_csv('data/train.csv', na_values=['.'])
+test = pd.read_csv('data/test.csv', na_values=['.'])
 ```
 
-## References
+## License and citation
 
-1. Jonsson EN, Karlsson MO. Xpose--an S-PLUS based population pharmacokinetic/pharmacodynamic model building aid for NONMEM. Comput Methods Programs Biomed. 1999;58(1):51-64.
-
-2. Holford N. A size standard for pharmacokinetics. Clin Pharmacokinet. 1996;30(5):329-332.
-
-## License
-
-This dataset is provided under the MIT licence, the repository default. You are free to
-use, share, and adapt it. Attribution is not a legal condition, but please cite the
-benchmark — see Citation below.
-
-## Citation
-
-If you use this benchmark, please cite:
-
-> Researcher J, Modeler J. (2025). Example PK Model Selection Benchmark. Pharmacometrics Benchmarks Initiative. DOI: TBD
+The MIT license applies to these files. Retain the copyright and license notice when redistributing them. This format example has no DOI; when referring to it, link to the repository and identify the version or commit used.

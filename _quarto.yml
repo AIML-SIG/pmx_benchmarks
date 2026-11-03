@@ -8,8 +8,8 @@ project:
 website:
   title: "Pharmacometrics Benchmarks"
   # Required for sitemap.xml, robots.txt, and canonical URLs.
-  site-url: https://pmxbenchmarks.github.io/pmx_benchmarks
-  repo-url: https://github.com/PMxBenchmarks/pmx_benchmarks
+  site-url: https://aiml-sig.github.io/pmx_benchmarks
+  repo-url: https://github.com/AIML-SIG/pmx_benchmarks
   navbar:
     left:
       - text: "Home"
@@ -26,10 +26,10 @@ website:
         href: contact.qmd
     right:
       - icon: github
-        href: https://github.com/PMxBenchmarks/pmx_benchmarks
+        href: https://github.com/AIML-SIG/pmx_benchmarks
   
   page-footer:
-    center: "Pharmacometrics Benchmarks Initiative | Associated with ISoP"
+    center: "Pharmacometrics Benchmarks Initiative | AI/ML SIG Benchmarking Datasets Working Group"
 
 format:
   html:

@@ -1,5 +1,105 @@
 /* Custom styles for Pharmacometrics Benchmarks website */
 
+.home-hero {
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+  margin: 0 auto 2rem;
+  max-width: 1120px;
+  border-radius: 1.25rem;
+  background: linear-gradient(130deg, #eaf4f8 0%, #f5f9f6 55%, #e9f1ef 100%);
+}
+
+.home-hero .home-kicker {
+  color: #276a74;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.home-hero h2 {
+  max-width: 16ch;
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  line-height: 1.08;
+  margin: .8rem 0 1.25rem;
+}
+
+.home-hero p {
+  max-width: 70ch;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.home-hero .btn {
+  margin: .5rem .65rem .25rem 0;
+}
+
+.home-section,
+.home-status {
+  max-width: 1120px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1.5rem;
+}
+
+.home-section > h2 {
+  margin-bottom: 1.25rem;
+}
+
+.home-section > p {
+  max-width: 78ch;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.home-grid-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.home-card {
+  padding: 1.5rem;
+  border: 1px solid #d9e5e6;
+  border-radius: 1rem;
+  background: #fff;
+}
+
+.home-card h3 {
+  margin-top: 0;
+}
+
+.home-status {
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid #276a74;
+  background: #f3f8f7;
+}
+
+body.quarto-dark .home-hero {
+  background: linear-gradient(130deg, #1d3942, #25362f);
+}
+
+body.quarto-dark .home-hero .home-kicker {
+  color: #9bd8df;
+}
+
+body.quarto-dark .home-card {
+  background: #222b32;
+  border-color: #46535a;
+}
+
+body.quarto-dark .home-status {
+  background: #243431;
+  border-color: #9bd8df;
+}
+
+@media (max-width: 750px) {
+  .home-grid,
+  .home-grid-three {
+    grid-template-columns: 1fr;
+  }
+}
+
 :root {
   --primary-color: #2c3e50;
   --secondary-color: #3498db;
@@ -7,7 +107,7 @@
 }
 
 /* Dark mode color adjustments */
-[data-bs-theme="dark"] {
+body.quarto-dark {
   --primary-color: #4a5f7f;
   --secondary-color: #5dade2;
   --accent-color: #ec7063;
@@ -32,7 +132,7 @@ table {
   background-color: #f8f9fa;
 }
 
-[data-bs-theme="dark"] .callout {
+body.quarto-dark .callout {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
@@ -49,25 +149,25 @@ table {
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-[data-bs-theme="dark"] .benchmark-card {
+body.quarto-dark .benchmark-card {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-[data-bs-theme="dark"] .benchmark-card:hover {
+body.quarto-dark .benchmark-card:hover {
   box-shadow: 0 4px 6px rgba(255,255,255,0.1);
 }
 
 /* Improve link visibility in dark mode */
-[data-bs-theme="dark"] a {
+body.quarto-dark a:not(.btn):not(.nav-link) {
   color: var(--secondary-color);
 }
 
-[data-bs-theme="dark"] a:hover {
+body.quarto-dark a:not(.btn):not(.nav-link):hover {
   color: #85c1e9;
 }
 
 /* Better code highlighting in dark mode */
-[data-bs-theme="dark"] code {
+body.quarto-dark code {
   background-color: rgba(255, 255, 255, 0.1);
   padding: 0.2em 0.4em;
   border-radius: 3px;
@@ -77,4 +177,22 @@ table {
 hr {
   margin: 2em 0;
   opacity: 0.2;
+}
+
+/* Keep homepage content and actions usable at narrow viewport widths. */
+.home-grid > *,
+.home-card {
+  min-width: 0;
+}
+
+.home-card p {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 450px) {
+  .home-hero .btn {
+    display: block;
+    white-space: normal;
+    margin-right: 0;
+  }
 }

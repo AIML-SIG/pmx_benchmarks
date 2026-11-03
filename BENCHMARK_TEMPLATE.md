@@ -12,12 +12,12 @@ benchmarks/<your-dataset-name>/
 │   ├── train.csv               # Training dataset (required)
 │   ├── test.csv                # Test dataset (required)
 │   └── data-dictionary.yml     # Column descriptions, yspec-style YAML (required)
-└── README.md                   # Quick reference (optional, auto-generated)
+└── README.md                   # Quick reference (optional)
 ```
 
 ## index.qmd Template
 
-```markdown
+````markdown
 ---
 title: "Your Benchmark Title"
 subtitle: "Brief subtitle"
@@ -87,7 +87,9 @@ Training and test set sizes.
 
 **Objective:** Clear description
 
-**Evaluation Metric:** Specific metric(s)
+**Evaluation Metric:** One metric per task, matching metadata.yml
+
+**Output Format:** Required columns or summary statistics, matching metadata.yml
 
 ### Task 2: [Name]
 
@@ -110,13 +112,12 @@ Relevant citations.
 
 ## License
 
-This dataset is published under the MIT licence, the repository default. Attribution
-is not legally required, but please cite the benchmark — see Citation below.
+This dataset is published under the MIT licence, the repository default. Retain the copyright and license notice when redistributing it. Please also cite the benchmark — see Citation below.
 
 ## Citation
 
 How to cite this benchmark.
-```
+````
 
 ## metadata.yml Template
 
@@ -169,14 +170,13 @@ tasks:
   #   truth_file: tasks/cmax_truth.yml   # pre-computed from generative model
   #   metric: quantile_coverage
 license: MIT           # repository default; see the Submission Guide
-doi: TBD  # Will be assigned upon acceptance
+doi: TBD  # Planned for accepted submissions once archival process is in place
 ```
 
 ## data-dictionary.yml Template
 
 [yspec](https://github.com/metrumresearchgroup/yspec)-style YAML. Top-level
-keys are column names (one per data column); reserved keys ending in `__`
-(e.g. `SETUP__`) are not treated as columns.
+keys are column names (one per data column); reserved keys ending in `__` (e.g. `SETUP__`) or starting with `_` are not treated as columns by the validator.
 
 ```yaml
 SETUP__:
