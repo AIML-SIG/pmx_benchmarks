@@ -4,7 +4,7 @@ title: "Scope & Eligibility"
 
 ## Purpose
 
-The Pharmacometrics Benchmarks repository maintains a curated, public collection of pharmacometric benchmark datasets to facilitate reproducible performance comparisons across novel modeling methodologies. It is **planned to be** hosted under ISoP and operated by the Benchmarking Datasets Working Group of the AI/ML SIG.
+The Pharmacometrics Benchmarks repository is being developed as a curated, public collection of pharmacometric benchmark datasets to facilitate reproducible comparisons across modeling methodologies. The Benchmarking Datasets Working Group of the AI/ML SIG is developing it, with hosting under ISoP planned.
 
 Content is openly accessible to both ISoP members and the broader scientific community.
 
@@ -29,7 +29,7 @@ Note that this repository provides datasets only. Designing an agentic evaluatio
 
 **Review:** Minimal structural review. Novelty bar is not high, but must be justified (see [Novel and Motivated](#novelty-and-motivation)).
 
-**Outcome:** DOI assigned upon acceptance; listed on the website.
+**Planned outcome:** Accepted submissions will be listed on the website and assigned a DOI once the archival process is in place.
 
 
 ---
@@ -45,9 +45,9 @@ Note that this repository provides datasets only. Designing an agentic evaluatio
 - Submissions designed for community competitions and rankings
 - Datasets where the problem itself is the contribution (comparable to CASP / protein folding challenges in biology)
 
-**Review:** Editorial triage, then full quality-based peer review in addition to structural review. In the future, these submissions are intended to be eligible for fast-track consideration at Quantitative Medicine.
+**Proposed review:** Editorial triage, then full scientific peer review in addition to structural review. A possible publication pathway with *Quantitative Medicine* is being explored; it is not yet established.
 
-**Outcome:** DOI assigned; eligible for featured status, benchmark suite inclusion, and QM publication.
+**Planned outcome:** Accepted submissions will be listed on the website and assigned a DOI once the archival process is in place. Featured status and inclusion in future benchmark suites may be offered.
 
 ---
 
@@ -59,23 +59,19 @@ A submission is in scope if it meets all of the following, regardless of goal:
 
 The dataset must be appropriate for pharmacometric modeling — pharmacokinetics, pharmacodynamics, exposure-response, or closely related quantitative clinical pharmacology tasks. Coverage across PK, PD, QSP, and novel data types (imaging, text, omics, all therapeutic modalities) is explicitly welcomed.
 
-### 2. Longitudinal structure
-
-Data will typically include repeated measurements over time. Non-longitudinal modalities (e.g. DXA, PET imaging) may be considered case-by-case, with explicit justification of both their relevance to the field and the need to include them in the collection.
-
-### 3. Well-documented
+### 2. Well-documented
 
 The submission must include:
 
-- A generative process description, realistic scenario description
+- A generative process description for synthetic data, or a scenario and provenance description for other data
 - A [yspec-style YAML data dictionary](https://github.com/metrumresearchgroup/yspec) for all variables
 - A train/test split with documented rationale
 
-### 4. Associated tasks
+### 3. Associated tasks
 
 Each dataset should come with pre-defined tasks by the submitter. Ideally, these tasks will reflect real drug-development decisions (model selection, dose optimization, exposure-response characterization, etc.). Similar to the overall requirements on dataset novelty, this can be simpler for generic submissions (e.g. RMSE) and should be strongly motivated by real situations for the "grand challenge" datasets. Each task must have a defined metric and output format. See the [Submission Guide](submission-guide.qmd) for the task schema.
 
-### 5. Novel and motivated {#novelty-and-motivation}
+### 4. Novel and motivated {#novelty-and-motivation}
 
 Submissions must include a **"letter to the editor" style motivation** — a dedicated section in the submission that:
 
@@ -87,19 +83,28 @@ For Goal 1 submissions, one paragraph is sufficient. For Goal 2 submissions, a f
 
 Reviewers will use this section to assess novelty. Novelty is inherently subjective; the letter-style format makes the reasoning transparent and auditable.
 
+### 5. Shareable under the repository license
+
+Submitters must have permission to share the data under the MIT license used by this repository. Retain the copyright and license notice when redistributing content. We also ask users to cite the datasets they use.
+
 ---
 
+## Additional expectations for grand challenges
 
-## Incentives for Contributors
+Grand challenges should reflect realistic clinical or drug-development conditions, including sampling, relationships among variables, and potential dropout or missingness where relevant. They should generally include repeated measurements over time. A non-longitudinal modality such as imaging can be considered case by case if the submission explains its pharmacometric relevance and why the benchmark belongs in this collection.
+
+These expectations do not exclude focused, simpler Goal 1 benchmarks that isolate a single phenomenon.
+
+## Recognition for Contributors
 
 We want contributing a benchmark to be rewarding in proportion to the effort put in.
 
-**Every accepted submission receives:**
+**The intended process for accepted submissions includes:**
 
-- A DOI, making it citable in the scientific literature. In addition to being a reward for contributors, this also makes benchmarks involving the dataset well documented and comparable across publications.
-- Permanent hosting and a stable URL
+- A DOI to make the dataset citable, once an archival process is in place
+- A stable page in the collection
 
 **Goal 2 submissions may additionally receive:**
 
-- **Fast-track consideration at QM** (tbd)
-- **ACoP spotlight** — an opportunity to present during the AI/ML SIG lunch at the American Conference on Pharmacometrics, allocated at the discretion of the SIG steering committee. This is currently the only such slot the SIG has to award; other venues may be added if comparable opportunities arise.
+- **A possible publication pathway** with *Quantitative Medicine*, subject to agreement with the journal
+- **Possible ACoP spotlight** — a presentation opportunity through the AI/ML SIG, subject to its steering committee's discretion and event plans.

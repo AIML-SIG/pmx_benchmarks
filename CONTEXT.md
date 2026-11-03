@@ -2,10 +2,9 @@ This repository is a place where researchers can upload benchmark datasets for p
 
 A core purpose is to enable the quantification of performance of different modelling
 methodology in a way that makes it easier to compare different methodology papers with each
-other. We will also be able to host competitions.
+other. Shared datasets may support future community competitions.
 
-The datasets are mostly synthetic. Each accepted submission receives a DOI and is permanently
-hosted.
+The datasets are mostly synthetic. A DOI and stable hosting are intended for accepted submissions once an archival process is in place.
 
 ## Two submission tracks
 
@@ -20,8 +19,8 @@ only.
 
 - **Goal 2 — Grand Challenges.** Highly realistic datasets built around a specific
   drug-development problem that current methods do not address well. Review is editorial
-  triage followed by full scientific peer review, so these submissions do amount to a
-  peer-reviewed paper.
+  triage followed by full scientific peer review as the intended review process. A journal
+  publication pathway has not yet been established.
 
 Note that the repository provides datasets only. Building an agentic evaluation framework is
 out of scope here and is better suited to the Agentic WG, which may still make heavy use of
@@ -44,7 +43,7 @@ these datasets in its evaluations.
 
 ## Additional requirements for Goal 2
 
-- Be realistic (irregular sampling, confounding dropouts, realistic relationships)
+- Reflect realistic sampling, relationships, and dropout or missingness where relevant
 - Be longitudinal — non-longitudinal modalities (DXA, PET imaging) are considered
   case-by-case with explicit justification
 
@@ -55,8 +54,7 @@ not excluded outright.
 ## Licensing
 
 Everything in the repository — data, code, documentation — is MIT licensed. We use one
-permissive licence rather than asking each submitter to choose, and ask politely for citation
-rather than relying on a licence to compel attribution.
+permissive licence rather than asking each submitter to choose, and require the copyright and license notice to be retained on redistribution. We also ask for scholarly citation.
 
 ## Website
 
@@ -65,8 +63,8 @@ The repository publishes a GitHub Pages website (Quarto) describing
 - The purpose of the repo
 - The scope and eligibility criteria, and the two goals
 - The initiative itself
-  - Governing body
-  - Association with ISoP and publication venue
+  - Working group and planned hosting under ISoP
+  - Proposed review and publication pathways
   - How to get in touch
 - The submission process
 - A header for all the benchmarks

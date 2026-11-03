@@ -1,12 +1,12 @@
 SETUP__:
-  description: Data dictionary for the example PK model selection benchmark
+  description: Data dictionary for illustrative PK model selection snippets
   glue:
     - "{{ short }}"
 
 ID:
   short: Subject identifier
   type: integer
-  values: 1 to 200
+  values: [1, 201]
 
 TIME:
   short: Time since first dose
@@ -25,7 +25,7 @@ DV:
   short: Dependent variable (plasma concentration)
   type: numeric
   unit: mg/L
-  comment: Positive on observation rows (EVID=0); missing on dose event rows.
+  comment: Positive on observation rows (EVID=0); represented by . on dose event rows.
 
 EVID:
   short: Event ID

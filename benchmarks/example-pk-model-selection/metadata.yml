@@ -1,16 +1,12 @@
 name: example-pk-model-selection
-title: Example PK Model Selection Benchmark
+title: PK Model Selection Submission Format Example
 version: 1.0.0
 date: 2025-10-16
-goal: generic          # generic | grand_challenge
+goal: generic
+status: format_example
 authors:
-  - name: Jane Researcher
-    affiliation: Example University
-    email: jane.researcher@example.edu
-  - name: John Modeler
-    affiliation: Pharma Institute
-    email: john.modeler@pharma.org
-description: A synthetic two-compartment pharmacokinetic dataset for evaluating model selection methodologies
+  - name: Pharmacometrics Benchmarks contributors
+description: Small illustrative CSV snippets and task definitions; not a validated scientific benchmark
 keywords:
   - pharmacokinetics
   - model-selection
@@ -19,12 +15,12 @@ keywords:
   - covariates
 data_type: synthetic
 therapeutic_area: general
-n_subjects: 200
-n_subjects_train: 140
-n_subjects_test: 60
-n_observations: 960
-n_observations_train: 673
-n_observations_test: 287
+n_subjects: 2
+n_subjects_train: 1
+n_subjects_test: 1
+n_observations: 6
+n_observations_train: 3
+n_observations_test: 3
 tasks:
   - name: structural-model-selection
     type: classification
@@ -45,4 +41,4 @@ tasks:
     output_format: {type: individual_predictions, columns: [ID, TIME, PRED]}
     metric: rmse
 license: MIT
-doi: TBD
+doi: null  # No DOI: submission format example

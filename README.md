@@ -4,7 +4,7 @@ A curated collection of benchmark datasets for evaluating pharmacometric modelin
 
 ## 🎯 Purpose
 
-This repository provides high-quality, peer-reviewed benchmark datasets that enable:
+This repository is being developed as a collection of documented pharmacometric benchmark datasets that will enable:
 
 - Reproducible comparison of different modeling approaches
 - Transparent evaluation of new methods
@@ -13,30 +13,30 @@ This repository provides high-quality, peer-reviewed benchmark datasets that ena
 
 ## 🌐 Website
 
-Visit our [GitHub Pages site](https://pmxbenchmarks.github.io/pmx_benchmarks/) for:
+Visit our [GitHub Pages site](https://aiml-sig.github.io/pmx_benchmarks/) for:
 
 - Complete documentation
-- Browse available benchmarks
+- Browse the reference example and future community benchmarks
 - Submission guidelines
 - Contact information
 
-## 📊 Available Benchmarks
+## 📊 Benchmark Example
 
-Browse all benchmarks at [pmxbenchmarks.github.io/pmx_benchmarks/benchmarks](https://pmxbenchmarks.github.io/pmx_benchmarks/)
+The [benchmark page](https://aiml-sig.github.io/pmx_benchmarks/benchmarks.html) currently contains a reference example. Community submissions are welcome.
 
 ## 🚀 Quick Start
 
 ### Using Benchmarks
 
-Benchmarks can be accessed directly from this repository or using helper packages:
+Data files can be accessed directly from this repository. Install Git LFS and run `git lfs pull` after cloning to retrieve CSV data rather than pointer files. The current files illustrate the format; they are not a complete scientific benchmark.
 
 ```python
 # Python example - direct access
 import pandas as pd
 
 # Load a benchmark dataset
-train = pd.read_csv('benchmarks/example-pk-model-selection/data/train.csv')
-test = pd.read_csv('benchmarks/example-pk-model-selection/data/test.csv')
+train = pd.read_csv('benchmarks/example-pk-model-selection/data/train.csv', na = c('', 'NA', '.'))
+test = pd.read_csv('benchmarks/example-pk-model-selection/data/test.csv', na = c('', 'NA', '.'))
 ```
 
 ```r
@@ -44,17 +44,13 @@ test = pd.read_csv('benchmarks/example-pk-model-selection/data/test.csv')
 library(readr)
 
 # Load a benchmark dataset
-train <- read_csv('benchmarks/example-pk-model-selection/data/train.csv')
-test <- read_csv('benchmarks/example-pk-model-selection/data/test.csv')
+train <- read_csv('benchmarks/example-pk-model-selection/data/train.csv', na = c('', 'NA', '.'))
+test <- read_csv('benchmarks/example-pk-model-selection/data/test.csv', na = c('', 'NA', '.'))
 ```
 
 ### Helper Packages
 
-For easier programmatic access, see our companion repositories:
-
-- **Python**: `pmx-benchmarks-py` (coming soon)
-- **R**: `pmxbenchmarks` (coming soon)
-- **Julia**: `PMXBenchmarks.jl` (coming soon)
+Helper packages for Python, R, and Julia are proposals, not available releases. See [COMPANION_REPOS.md](COMPANION_REPOS.md) to help develop them.
 
 ### Submitting a Benchmark
 
@@ -63,7 +59,7 @@ For easier programmatic access, see our companion repositories:
 3. Follow the structure in `benchmarks/example-pk-model-selection/`
 4. Submit a Pull Request
 
-See our [submission guide](https://pmxbenchmarks.github.io/pmx_benchmarks/submission-guide.html) for detailed instructions.
+See our [submission guide](https://aiml-sig.github.io/pmx_benchmarks/submission-guide.html) for detailed instructions.
 
 ## 📁 Repository Structure
 
@@ -93,11 +89,11 @@ pmx_benchmarks/
 
 ## 🔍 Benchmark Goals
 
-There are two submission tracks — see the [Scope & Eligibility](https://pmxbenchmarks.github.io/pmx_benchmarks/scope.html) page for details.
+There are two submission tracks — see the [Scope & Eligibility](https://aiml-sig.github.io/pmx_benchmarks/scope.html) page for details.
 
-**Goal 1 — Generic Benchmarks:** Teaching cases, agentic datasets, unit-test style submissions. Moderate novelty bar. Receives a DOI.
+**Goal 1 — Generic Benchmarks:** Teaching cases, agentic datasets, unit-test style submissions. Moderate novelty bar.
 
-**Goal 2 — Grand Challenges:** Highly realistic drug-development scenarios. High novelty bar. Receives a DOI and is eligible for fast-track consideration at Quantitative Medicine.
+**Goal 2 — Grand Challenges:** Highly realistic drug-development scenarios. High novelty bar and deeper scientific review. A publication pathway with *Quantitative Medicine* is being explored.
 
 All benchmarks must:
 
@@ -111,23 +107,21 @@ All benchmarks must:
 
 We welcome contributions! Please see:
 
-- [Scope & Eligibility](https://pmxbenchmarks.github.io/pmx_benchmarks/scope.html)
-- [Submission Guide](https://pmxbenchmarks.github.io/pmx_benchmarks/submission-guide.html)
+- [Scope & Eligibility](https://aiml-sig.github.io/pmx_benchmarks/scope.html)
+- [Submission Guide](https://aiml-sig.github.io/pmx_benchmarks/submission-guide.html)
 - [Pull Request Template](.github/PULL_REQUEST_TEMPLATE.md)
 
 ## 📝 License
 
-MIT License, for code, documentation, and benchmark data alike. Attribution is not a legal
-condition, but we ask that you cite the benchmarks you use — each accepted submission
-receives a DOI.
+The MIT License applies to code, documentation, and benchmark data. When redistributing them, retain the copyright and license notice. We also ask that you cite the benchmarks you use. A DOI is planned for accepted submissions; the current format example has no DOI.
 
 ## 📧 Contact
 
-- **Issues:** [Report an issue or ask a question](https://github.com/PMxBenchmarks/pmx_benchmarks/issues)
-- **Contact page:** [pmxbenchmarks.github.io/pmx_benchmarks/contact.html](https://pmxbenchmarks.github.io/pmx_benchmarks/contact.html)
+- **Issues:** [Report an issue or ask a question](https://github.com/AIML-SIG/pmx_benchmarks/issues)
+- **Contact page:** [aiml-sig.github.io/pmx_benchmarks/contact.html](https://aiml-sig.github.io/pmx_benchmarks/contact.html)
 
 ## 🏛️ Governance
 
-This initiative is associated with the International Society of Pharmacometrics (ISoP).
+The initiative is being developed by the AI/ML SIG Benchmarking Datasets Working Group, with hosting under the International Society of Pharmacometrics (ISoP) planned.
 
-For more information, see our [About page](https://pmxbenchmarks.github.io/pmx_benchmarks/about.html).
+For more information, see our [About page](https://aiml-sig.github.io/pmx_benchmarks/about.html).
